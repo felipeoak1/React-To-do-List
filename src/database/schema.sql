@@ -1,17 +1,11 @@
-  CREATE DATABASE mycontacts;
+CREATE DATABASE taskslist;
 
-  CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
 
-  CREATE TABLE IF NOT EXISTS categories (
+CREATE TABLE IF NOT EXISTS tarefas (
     id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-    name VARCHAR NOT NULL
-  );
-
-  CREATE TABLE IF NOT EXISTS contacts (
-    id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-    name VARCHAR NOT NULL,
-    email VARCHAR UNIQUE,
-    phone VARCHAR,
-    category_id UUID,
-    FOREIGN KEY(category_id) REFERENCES categories(id) ON DELETE CASCADE
-  );
+    titulo VARCHAR NOT NULL,
+    descricao VARCHAR,
+    status VARCHAR NOT NULL,
+    data TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
